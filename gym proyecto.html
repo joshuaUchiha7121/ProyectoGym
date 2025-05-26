@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Proyecto UMG Gym</title>
+</head>
+<body style="text-align: center; font-family: sans-serif; background-color: #f0f0f0;">
+
+  <h1><img src="https://styles.redditmedia.com/t5_2r9x1/styles/communityIcon_gy5ud2s0doze1.png" alt="imagen incentiva para ejercitarse">
+    <h2> Proyecto UMG Gym</h2>
+  <h2>Que ejercicios tocaran hoy en el gimnasio?</h2>
+  <p>Escribe algun dia de la semana para decirte cual es tu rutina 😊😊😊</p>
+
+  <input type="text" id="diaInput" placeholder="Escribe un día" />
+  <div id="resultado" style="margin-top: 20px;"></div>
+
+  <script>
+    var rutinas = {
+      "lunes": ["Pecho", "Tríceps", "Abdominales"],
+      "martes": ["Espalda", "Bíceps"],
+      "miercoles": ["Piernas", "Glúteos"],
+      "miércoles": ["Piernas", "Glúteos"],
+      "jueves": ["Hombros", "Trapecio"],
+      "viernes": ["Full Body", "Cardio"],
+      "sabado": ["Cardio", "Estiramientos"],
+      "sábado": ["Cardio", "Estiramientos"],
+      "domingo": ["Descanso o Yoga"]
+    };
+
+    var imagenes = {
+      "Pecho": "https://www.entrenamiento.com/wp-content/uploads/press-banca-1.jpg",
+      "Tríceps": "https://www.entrenamiento.com/wp-content/uploads/fondos-triceps.jpg",
+      "Abdominales": "https://www.entrenamiento.com/wp-content/uploads/crunch-abdominales.jpg",
+      "Espalda": "https://www.entrenamiento.com/wp-content/uploads/dominadas.jpg",
+      "Bíceps": "https://www.entrenamiento.com/wp-content/uploads/curl-biceps-mancuerna.jpg",
+      "Piernas": "https://www.entrenamiento.com/wp-content/uploads/sentadilla.jpg",
+      "Glúteos": "https://www.entrenamiento.com/wp-content/uploads/hip-thrust.jpg",
+      "Hombros": "https://www.entrenamiento.com/wp-content/uploads/press-hombro-mancuerna.jpg",
+      "Trapecio": "https://www.entrenamiento.com/wp-content/uploads/encogimiento-hombros.jpg",
+      "Full Body": "https://www.entrenamiento.com/wp-content/uploads/entrenamiento-cuerpo-completo.jpg",
+      "Cardio": "https://www.entrenamiento.com/wp-content/uploads/correr.jpg",
+      "Estiramientos": "https://www.entrenamiento.com/wp-content/uploads/estiramientos.jpg",
+      "Descanso o Yoga": "https://www.entrenamiento.com/wp-content/uploads/yoga.jpg"
+    };
+
+    var input = document.getElementById("diaInput");
+    var resultado = document.getElementById("resultado");
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        var dia = input.value.toLowerCase();
+        var ejercicios = rutinas[dia];
+
+        if (ejercicios) {
+          var html = "<h3>Rutina para " + dia + "</h3><ul>";
+          for (var i = 0; i < ejercicios.length; i++) {
+            html += "<li>" + ejercicios[i] + "<br><img src='" + imagenes[ejercicios[i]] + "' width='200'></li>";
+          }
+          html += "</ul>";
+          resultado.innerHTML = html;
+        } else {
+          resultado.innerHTML = "<p style='color:red;'>Ese día no está en la rutina.</p>";
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
